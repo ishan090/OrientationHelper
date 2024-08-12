@@ -71,5 +71,9 @@ def logout():
         session["user"] = None
     return redirect("/login/")
 
+@app.route("/traffic/")
+def traffic():
+    return render_template("traffic.html", locations=data_loaded)
 
-app.run(host="0.0.0.0")
+
+app.run(host="0.0.0.0", debug=True)

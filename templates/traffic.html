@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<h1>View Firstie Traffic around different locations</h1>
+<p>The values range from a scale of 0 to 5. 5 representing a space that is completely or almost completely packed, and 0 indicating a space that's completely empty.
+What could this tell you? Well, if you're in IT and it's packed, consider going to med instead (looking at the data) if it's empty instead.
+Or maybe if you're unsure as to where to go, look up the emptiest spot and get done with that first? Good Luck</p>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+  <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Location</th>
+            <th scope="col">Firstie Traffic</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in locations %}
+            <tr>
+                {% for j in i %}
+                    <td>{{ j }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
