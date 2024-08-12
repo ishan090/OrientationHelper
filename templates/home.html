@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+Home Page! Logged in as - {{ user }}. Sumbit form to update traffic levels.
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<form action="" method="post">
+    <div class="form-row align-items-center">
+      <div class="col-auto my-1">
+        <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+        <select required name="traffic" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+          <option selected>Choose Traffic Level (0 being none and 5 the highest)</option>
+          <option value="0">Zero</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+          <option value="4">Four</option>
+          <option value="5">Five</option>
+        </select>
+      </div>
+      <div class="col-auto my-1">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+
+  <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Location</th>
+            <th scope="col">Firstie Traffic</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in locations %}
+            <tr>
+                {% for j in i %}
+                    <td>{{ j }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
