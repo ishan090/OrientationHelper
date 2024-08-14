@@ -1,16 +1,11 @@
 
 import json
+import os
 from flask import Flask, redirect, url_for, render_template, request, session, flash
 
 
-data_path = "data/"
-users = ["med", "it", "advancement", "frro"]
-passwords = {
-    "med": "medcenter",
-    "it": "computer",
-    "advancement": "blahblah",
-    "frro": "why"
-}
+data_path = os.path.dirname(__file__) + "/data/"
+print(data_path)
 
 
 def get_data(name):
